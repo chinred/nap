@@ -1,0 +1,289 @@
+/* 기본 다크/라이트 테마 */
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: white;
+  line-height: 1.6;
+}
+
+body[data-theme="light"] {
+  background-color: #f4f4f4;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* 배경 그라데이션 애니메이션 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #3f51b5, #2196f3, #9c27b0, #e91e63);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: -1;
+  opacity: 0.2;
+  transform: var(--tilt, rotate(0deg));
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 다크모드 버튼 */
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.theme-toggle button {
+  padding: 10px 20px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle button:hover {
+  background-color: #5c6bc0;
+}
+
+/* 유리 효과 카드 */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+/* 인트로 */
+.intro {
+  text-align: center;
+  padding: 0 16px;
+  margin-bottom: 60px;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wave-hand {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+
+
+.intro h1 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: inline-block;
+  animation: none;
+}
+
+.intro h1::before {
+  content: "👋";
+  display: inline-block;
+  animation: wave-hand 1.5s ease-in-out;
+  animation-iteration-count: 1;
+  margin-right: 8px;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.compliment {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+/* 소개 섹션 */
+.about {
+  padding: 0 16px;
+  margin-bottom: 60px;
+}
+
+.about h2 {
+  margin-bottom: 10px;
+}
+
+.about p {
+  margin-top: 16px;
+  margin-bottom: 10px;
+}
+
+.about-link {
+  text-decoration: none;
+  color: #fafafa;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 100px;
+  float: left;
+  margin: 5px;
+  margin-right: 16px;
+}
+
+/* 프로젝트 섹션 */
+.projects {
+  padding: 0 16px;
+  margin-bottom: 60px;
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 aspect ratio */
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.project-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card.large, .project-card.tall, .project-card.wide {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* 연락 섹션 */
+.contact {
+  padding: 0 16px;
+  margin-bottom: 60px;
+}
+
+.contact h2 {
+  margin-bottom: 20px;
+}
+
+.contact p {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+}
+
+.contact-form button {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 20px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #5c6bc0;
+}
+
+/* 반응형 모바일 */
+@media (max-width: 600px) {
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .intro p,
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    justify-content: center;
+  }
+
+  .container {
+    padding: 20px 12px;
+  }
+
+  .project-card.large, .project-card.wide, .project-card.tall {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+}
+
+/* 커서 이펙트 */
+.cursor-effect {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.card.glass {
+  padding: 20px;
+}
